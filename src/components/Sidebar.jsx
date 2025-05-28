@@ -8,6 +8,8 @@ import {
   User,
   LogIn,
   UserPlus,
+  Bell,
+  ChartLine,
 } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -17,7 +19,9 @@ const menuItems = [
   { name: 'Laporan', icon: <BarChart2 />, path: '/laporan' },
   { name: "Penjualan", icon: <ShoppingCart />, path: "/penjualan" },
   { name: 'Pelanggan', icon: <Users />, path: '/pelanggan' },
-  { name: 'Kinerja Sales', icon: <User />, path: '/kinerja-sales' }, // ✅ Tambahan
+  { name: 'Kinerja Sales', icon: <User />, path: '/kinerja-sales' },
+  { name: 'Remainder', icon: <Bell />, path: '/remainder' },
+  { name: 'Status', icon: <ChartLine />, path: '/status' },
 ]
 
 const accountItems = [
