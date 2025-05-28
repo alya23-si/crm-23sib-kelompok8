@@ -8,7 +8,8 @@ import CustomerManagement from './pages/CustomerManagemenrt';
 import KinerjaSales from './pages/KinerjaSales'; 
 import FollowUpReminder from './pages/FollowUpReminder'; 
 import SalesPipeline from './pages/SalesPipeline'; 
-
+import FormPendaftaranUmroh from './pages/FormPendaftaranUmroh';
+import Prospek from './pages/Prospek';
 function App() {
   return (
     <Routes>
@@ -21,6 +22,9 @@ function App() {
         <Route path="/kinerja-sales" element={<KinerjaSales />} /> 
         <Route path="/remainder" element={<FollowUpReminder />} /> 
           <Route path="/status" element={<SalesPipeline />} />
+          <Route path="/DaftarUmroh" element={<FormPendaftaranUmroh />} />
+          <Route path="/Prospek" element={<Prospek />} />
+
       </Route>
     </Routes>
   );
