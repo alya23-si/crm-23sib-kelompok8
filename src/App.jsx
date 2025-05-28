@@ -6,6 +6,8 @@ import Laporan from './pages/Laporan';
 import Dashboard from './pages/Dashboard';
 import CustomerManagement from './pages/CustomerManagemenrt';
 import KinerjaSales from './pages/KinerjaSales'; 
+import FollowUpReminder from './pages/FollowUpReminder'; 
+import SalesPipeline from './pages/SalesPipeline'; 
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/laporan" element={<Laporan />} />
         <Route path="/pelanggan" element={<CustomerManagement />} />
         <Route path="/kinerja-sales" element={<KinerjaSales />} /> 
+        <Route path="/remainder" element={<FollowUpReminder />} /> 
+          <Route path="/status" element={<SalesPipeline />} />
       </Route>
     </Routes>
   );
