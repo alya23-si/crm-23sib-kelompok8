@@ -3,7 +3,9 @@ import MainLayout from './components/MainLayout';
 import Dashboard from './pages/Dashboard';
 import Penjualan from './pages/Penjualan'; 
 import Produk from './pages/Produk';
-import Laporan from './pages/Laporan';// Pastikan file ini ada
+import Laporan from './pages/Laporan';
+import FormPendaftaranUmroh from './pages/FormPendaftaranUmroh';// Pastikan file ini ada
+import Prospek from './pages/Prospek';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
        <Route path="/penjualan" element={<Penjualan />} />
        <Route path="/produk" element={<Produk />} />
        <Route path="/laporan" element={<Laporan />} />
+      <Route path="/DaftarUmroh" element={<FormPendaftaranUmroh />} />
+          <Route path="/Prospek" element={<Prospek />} />
       </Route>
     </Routes>
   );
