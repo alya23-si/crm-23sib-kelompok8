@@ -1,10 +1,10 @@
 import {
   LayoutDashboard,
-  Users,         // untuk pelanggan
-  ShoppingCart,  // untuk penjualan
-  Box,           // untuk produk
-  BarChart2,     // untuk laporan
-  Settings,      // untuk pengaturan akun
+  Users,
+  ShoppingCart,
+  Box,
+  BarChart2,
+  Settings,
   User,
   LogIn,
   UserPlus,
@@ -16,7 +16,8 @@ const menuItems = [
   { name: 'Produk', icon: <Box />, path: '/produk' },
   { name: 'Laporan', icon: <BarChart2 />, path: '/laporan' },
   { name: "Penjualan", icon: <ShoppingCart />, path: "/penjualan" },
-    { name: 'Pelanggan', icon: <Users />, path: '/pelanggan' },
+  { name: 'Pelanggan', icon: <Users />, path: '/pelanggan' },
+  { name: 'Kinerja Sales', icon: <User />, path: '/kinerja-sales' }, // ✅ Tambahan
 ]
 
 const accountItems = [
