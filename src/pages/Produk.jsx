@@ -11,12 +11,14 @@ const Produk = () => {
   ];
 
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-2xl font-bold mb-4">Daftar Produk</h1>
+    <div className="p-6">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-semibold text-gray-800">Daftar Produk</h1>
+      </div>
 
-      <div className="bg-white rounded-xl shadow p-6 overflow-auto">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-gray-100">
+      <div className="overflow-x-auto bg-white rounded-lg shadow">
+        <table className="min-w-full text-sm divide-y divide-gray-200">
+          <thead className="bg-gray-100 text-left text-xs text-gray-600 uppercase">
             <tr>
               <th className="px-4 py-2">ID</th>
               <th className="px-4 py-2">Nama Produk</th>
@@ -25,14 +27,14 @@ const Produk = () => {
               <th className="px-4 py-2">Stok</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-white divide-y divide-gray-100">
             {products.map((prod) => (
-              <tr key={prod.id} className="border-b hover:bg-gray-50">
-                <td className="px-4 py-2">{prod.id}</td>
-                <td className="px-4 py-2">{prod.name}</td>
-                <td className="px-4 py-2">{prod.category}</td>
-                <td className="px-4 py-2">${prod.price}</td>
-                <td className="px-4 py-2">{prod.stock}</td>
+              <tr key={prod.id}>
+                <td className="px-4 py-3">{prod.id}</td>
+                <td className="px-4 py-3">{prod.name}</td>
+                <td className="px-4 py-3">{prod.category}</td>
+                <td className="px-4 py-3">${prod.price}</td>
+                <td className="px-4 py-3">{prod.stock}</td>
               </tr>
             ))}
           </tbody>

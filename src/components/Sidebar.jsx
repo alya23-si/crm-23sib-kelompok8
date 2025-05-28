@@ -10,6 +10,8 @@ import {
   UserPlus,
   Bell,
   ChartLine,
+  ClipboardList,
+  FileSearch,
 } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -22,6 +24,8 @@ const menuItems = [
   { name: 'Kinerja Sales', icon: <User />, path: '/kinerja-sales' },
   { name: 'Remainder', icon: <Bell />, path: '/remainder' },
   { name: 'Status', icon: <ChartLine />, path: '/status' },
+    { name: "Form Umroh", icon: <ClipboardList />, path: "/DaftarUmroh" },
+  { name: "Manajemen Prospek", icon: <FileSearch />, path: "/Prospek" },
 ]
 
 const accountItems = [
