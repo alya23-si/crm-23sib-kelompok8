@@ -12,6 +12,8 @@ import {
   ChartLine,
   ClipboardList,
   FileSearch,
+  BookOpen,
+  MapPin,
 } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -24,9 +26,12 @@ const menuItems = [
   { name: 'Kinerja Sales', icon: <User />, path: '/kinerja-sales' },
   { name: 'Remainder', icon: <Bell />, path: '/remainder' },
   { name: 'Status', icon: <ChartLine />, path: '/status' },
-    { name: "Form Umroh", icon: <ClipboardList />, path: "/DaftarUmroh" },
+  { name: "Form Umroh", icon: <ClipboardList />, path: "/DaftarUmroh" },
   { name: "Manajemen Prospek", icon: <FileSearch />, path: "/Prospek" },
-]
+  { name: "Help Center", icon: <BookOpen />, path: "/HelpCenter" },
+  { name: "Destination", icon: <MapPin />, path: "/Destination" },
+
+];
 
 const accountItems = [
   { name: 'Pengaturan Akun', icon: <Settings />, path: '/akun' },
