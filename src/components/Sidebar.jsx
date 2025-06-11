@@ -14,6 +14,11 @@ import {
   FileSearch,
   BookOpen,
   MapPin,
+  Megaphone,
+  CalendarCheck,
+  Handshake,
+  Globe,
+  Gift,
 } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -28,10 +33,18 @@ const menuItems = [
   { name: 'Status', icon: <ChartLine />, path: '/status' },
   { name: "Form Umroh", icon: <ClipboardList />, path: "/DaftarUmroh" },
   { name: "Manajemen Prospek", icon: <FileSearch />, path: "/Prospek" },
+
   { name: "Help Center", icon: <BookOpen />, path: "/HelpCenter" },
   { name: "Destination", icon: <MapPin />, path: "/Destination" },
-
+ { name: 'Campaign Management', icon: <Megaphone />, path: '/campaigns' },
+  { name: 'Event-Based Marketing', icon: <CalendarCheck />, path: '/event-marketing' },
+  { name: 'Partner Marketing', icon: <Handshake />, path: '/partner-marketing' },
+  { name: 'Online Marketing', icon: <Globe />, path: '/online-marketing' },
+  { name: 'Customer Segmentation', icon: <Users />, path: '/customer-segmentation' },
+  { name: 'Loyalty', icon: <Gift />, path: '/loyalty-management' },
 ];
+
+
 
 const accountItems = [
   { name: 'Pengaturan Akun', icon: <Settings />, path: '/akun' },

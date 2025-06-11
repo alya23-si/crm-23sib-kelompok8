@@ -14,6 +14,12 @@ import HelpCenter from './pages/HelpCenter';
 import Destination from './pages/Destination';
 
 
+import CampaignManagement from './pages/CampaignManagement';
+import EventBasedMarketing from './pages/EventBasedMarket';
+import PartnerMarketing from "./pages/PartnerMarketing";
+import OnlineMarketing from "./pages/OnlineMarketing";
+import CustomerSegmentation from "./pages/CustomerSegmentation";
+import LoyaltyManagement from "./pages/LoyaltyManagement";
 function App() {
   return (
     <Routes>
@@ -31,6 +37,12 @@ function App() {
         <Route path="/HelpCenter" element={<HelpCenter />} />
         <Route path="/Destination" element={<Destination />} />
 
+        <Route path="/campaigns" element={<CampaignManagement />} />
+        <Route path="/event-marketing" element={<EventBasedMarketing />} />
+        <Route path="/partner-marketing" element={<PartnerMarketing />} />
+        <Route path="/online-marketing" element={<OnlineMarketing />} />
+        <Route path="/customer-segmentation" element={<CustomerSegmentation />} />
+        <Route path="/loyalty-management" element={<LoyaltyManagement />} />
 
       </Route>
     </Routes>
