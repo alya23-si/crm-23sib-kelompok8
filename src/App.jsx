@@ -10,6 +10,12 @@ import FollowUpReminder from './pages/FollowUpReminder';
 import SalesPipeline from './pages/SalesPipeline'; 
 import FormPendaftaranUmroh from './pages/FormPendaftaranUmroh';
 import Prospek from './pages/Prospek';
+import CampaignManagement from './pages/CampaignManagement';
+import EventBasedMarketing from './pages/EventBasedMarket';
+import PartnerMarketing from "./pages/PartnerMarketing";
+import OnlineMarketing from "./pages/OnlineMarketing";
+import CustomerSegmentation from "./pages/CustomerSegmentation";
+import LoyaltyManagement from "./pages/LoyaltyManagement";
 function App() {
   return (
     <Routes>
@@ -24,6 +30,12 @@ function App() {
           <Route path="/status" element={<SalesPipeline />} />
           <Route path="/DaftarUmroh" element={<FormPendaftaranUmroh />} />
           <Route path="/Prospek" element={<Prospek />} />
+        <Route path="/campaigns" element={<CampaignManagement />} />
+        <Route path="/event-marketing" element={<EventBasedMarketing />} />
+        <Route path="/partner-marketing" element={<PartnerMarketing />} />
+        <Route path="/online-marketing" element={<OnlineMarketing />} />
+        <Route path="/customer-segmentation" element={<CustomerSegmentation />} />
+        <Route path="/loyalty-management" element={<LoyaltyManagement />} />
 
       </Route>
     </Routes>

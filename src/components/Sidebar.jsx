@@ -12,6 +12,11 @@ import {
   ChartLine,
   ClipboardList,
   FileSearch,
+  Megaphone,
+  CalendarCheck,
+  Handshake,
+  Globe,
+  Gift,
 } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -24,8 +29,14 @@ const menuItems = [
   { name: 'Kinerja Sales', icon: <User />, path: '/kinerja-sales' },
   { name: 'Remainder', icon: <Bell />, path: '/remainder' },
   { name: 'Status', icon: <ChartLine />, path: '/status' },
-    { name: "Form Umroh", icon: <ClipboardList />, path: "/DaftarUmroh" },
+  { name: "Form Umroh", icon: <ClipboardList />, path: "/DaftarUmroh" },
   { name: "Manajemen Prospek", icon: <FileSearch />, path: "/Prospek" },
+  { name: 'Campaign Management', icon: <Megaphone />, path: '/campaigns' },
+  { name: 'Event-Based Marketing', icon: <CalendarCheck />, path: '/event-marketing' },
+  { name: 'Partner Marketing', icon: <Handshake />, path: '/partner-marketing' },
+  { name: 'Online Marketing', icon: <Globe />, path: '/online-marketing' },
+  { name: 'Customer Segmentation', icon: <Users />, path: '/customer-segmentation' },
+  { name: 'Loyalty', icon: <Gift />, path: '/loyalty-management' },
 ]
 
 const accountItems = [
