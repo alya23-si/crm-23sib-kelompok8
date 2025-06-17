@@ -20,6 +20,8 @@ import PartnerMarketing from "./pages/PartnerMarketing";
 import OnlineMarketing from "./pages/OnlineMarketing";
 import CustomerSegmentation from "./pages/CustomerSegmentation";
 import LoyaltyManagement from "./pages/LoyaltyManagement";
+import PrediksiPenjualan from './pages/PrediksiPenjualan';
+import PapanInformasi from './pages/PapanInformasi';
 function App() {
   return (
     <Routes>
@@ -43,6 +45,8 @@ function App() {
         <Route path="/online-marketing" element={<OnlineMarketing />} />
         <Route path="/customer-segmentation" element={<CustomerSegmentation />} />
         <Route path="/loyalty-management" element={<LoyaltyManagement />} />
+        <Route path="/prediksi" element={<PrediksiPenjualan />} />
+        <Route path="/informasi" element={<PapanInformasi />} />
 
       </Route>
     </Routes>

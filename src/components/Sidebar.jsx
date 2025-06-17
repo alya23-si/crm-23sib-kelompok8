@@ -1,3 +1,4 @@
+import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import {
   LayoutDashboard,
   Users,
@@ -19,6 +20,8 @@ import {
   Handshake,
   Globe,
   Gift,
+  ChartAreaIcon,
+  Info,
 } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -42,6 +45,8 @@ const menuItems = [
   { name: 'Online Marketing', icon: <Globe />, path: '/online-marketing' },
   { name: 'Customer Segmentation', icon: <Users />, path: '/customer-segmentation' },
   { name: 'Loyalty', icon: <Gift />, path: '/loyalty-management' },
+  { name: 'Prediksi penjualan', icon: <ChartAreaIcon />, path: '/prediksi' },
+  { name: 'Papan Informasi', icon: <Info />, path: '/informasi' },
 ];
 
 
