@@ -25,22 +25,22 @@ const OnlineMarketing = () => {
   };
 
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-semibold text-gray-800">
-          Online Marketing
+    <div className="p-6 space-y-6">
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-3xl font-bold text-green-800">
+          Strategi Online Marketing RWH
         </h1>
         <button
           onClick={() => setIsOpen(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+          className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
         >
           <PlusCircle size={18} /> Tambah Strategi
         </button>
       </div>
 
-      <div className="overflow-x-auto bg-white rounded-xl shadow p-4">
+      <div className="overflow-x-auto bg-white rounded-xl shadow border border-green-100 p-4">
         <table className="min-w-full text-sm text-left">
-          <thead className="bg-gray-100">
+          <thead className="bg-green-50 text-green-800">
             <tr>
               <th className="px-4 py-2">Channel</th>
               <th className="px-4 py-2">Kampanye</th>
@@ -66,12 +66,13 @@ const OnlineMarketing = () => {
         </table>
       </div>
 
+      {/* Modal Form */}
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
         <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
 
         <div className="fixed inset-0 flex items-center justify-center">
           <Dialog.Panel className="bg-white rounded-lg p-6 w-[90%] max-w-md shadow-lg">
-            <Dialog.Title className="text-lg font-bold mb-4">
+            <Dialog.Title className="text-lg font-bold text-green-700 mb-4">
               Tambah Strategi Marketing
             </Dialog.Title>
 
@@ -101,7 +102,7 @@ const OnlineMarketing = () => {
               </button>
               <button
                 onClick={handleAdd}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
               >
                 Simpan
               </button>

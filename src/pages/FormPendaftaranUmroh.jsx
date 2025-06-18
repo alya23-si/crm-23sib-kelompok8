@@ -1,5 +1,5 @@
-
 import React, { useState } from "react";
+import logorwh from "../assets/logorwh.png"; // Pastikan path sesuai
 
 const FormPendaftaranUmroh = () => {
   const [formData, setFormData] = useState({
@@ -29,8 +29,11 @@ const FormPendaftaranUmroh = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-white shadow rounded-xl mt-8">
-      <h1 className="text-2xl font-bold mb-6 text-gray-800">Formulir Pendaftaran Umroh</h1>
+    <div className="max-w-4xl mx-auto p-8 bg-white shadow-xl rounded-2xl mt-10 border border-green-100">
+      <div className="flex items-center gap-4 mb-6">
+        <img src={logorwh} alt="Logo RWH" className="h-12 w-auto" />
+        <h1 className="text-3xl font-bold text-green-800">Formulir Pendaftaran Umroh</h1>
+      </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -147,7 +150,7 @@ const FormPendaftaranUmroh = () => {
         <div className="pt-4">
           <button
             type="submit"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-md shadow"
+            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-md shadow"
           >
             Daftar Sekarang
           </button>

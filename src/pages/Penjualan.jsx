@@ -15,7 +15,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const Penjualan = () => {
   const summary = [
     { label: "Total Penjualan", value: "$120,000", percent: "+10%", color: "green" },
-    { label: "Pesanan Hari Ini", value: "250", percent: "+4%", color: "blue" },
+    { label: "Pesanan Hari Ini", value: "250", percent: "+4%", color: "orange" },
     { label: "Produk Terjual", value: "3,452", percent: "-1%", color: "red" },
     { label: "Retur", value: "120", percent: "+2%", color: "yellow" },
   ];
@@ -26,7 +26,8 @@ const Penjualan = () => {
       {
         label: "Penjualan Harian ($)",
         data: [12000, 15000, 10000, 14000, 18000, 22000, 17000],
-        backgroundColor: "rgba(16, 185, 129, 0.7)", // green-500
+        backgroundColor: "rgba(67, 160, 71, 0.7)", // green-600
+        borderRadius: 6,
       },
     ],
   };
@@ -35,7 +36,22 @@ const Penjualan = () => {
     responsive: true,
     plugins: {
       legend: { position: "top" },
-      title: { display: true, text: "Tren Penjualan Mingguan" },
+      title: {
+        display: true,
+        text: "Tren Penjualan Mingguan",
+        color: "#43A047",
+        font: { size: 18 },
+      },
+    },
+    scales: {
+      y: {
+        ticks: { color: "#666" },
+        grid: { color: "#eee" },
+      },
+      x: {
+        ticks: { color: "#666" },
+        grid: { display: false },
+      },
     },
   };
 
@@ -48,10 +64,11 @@ const Penjualan = () => {
 
   return (
     <div className="p-6 space-y-8">
-      {/* Ringkasan Penjualan */}
+      <h1 className="text-2xl font-bold text-green-700">📦 Ringkasan Penjualan</h1>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {summary.map(({ label, value, percent, color }) => (
-          <div key={label} className="bg-white rounded-xl shadow p-5">
+          <div key={label} className="bg-white rounded-xl shadow p-5 border border-gray-100">
             <p className="text-sm text-gray-500">{label}</p>
             <h2 className={`text-2xl font-bold text-${color}-600 flex items-center gap-2`}>
               {value}
@@ -61,17 +78,15 @@ const Penjualan = () => {
         ))}
       </div>
 
-      {/* Grafik Penjualan */}
-      <div className="bg-white rounded-xl shadow p-6">
+      <div className="bg-white rounded-xl shadow p-6 border border-gray-100">
         <Bar options={barOptions} data={barData} />
       </div>
 
-      {/* Tabel Transaksi Penjualan */}
-      <div className="bg-white rounded-xl shadow p-6">
-        <h2 className="text-lg font-semibold mb-4">Transaksi Terakhir</h2>
+      <div className="bg-white rounded-xl shadow p-6 border border-gray-100">
+        <h2 className="text-lg font-semibold mb-4 text-green-700">🧾 Transaksi Terakhir</h2>
         <div className="overflow-auto">
           <table className="w-full text-sm text-left">
-            <thead className="bg-gray-100">
+            <thead className="bg-green-50">
               <tr>
                 <th className="px-4 py-2">ID Transaksi</th>
                 <th className="px-4 py-2">Tanggal</th>
@@ -83,11 +98,11 @@ const Penjualan = () => {
             <tbody>
               {transaksi.map((trx) => (
                 <tr key={trx.id} className="border-b hover:bg-gray-50">
-                  <td className="px-4 py-2 font-medium">{trx.id}</td>
-                  <td className="px-4 py-2">{trx.tanggal}</td>
-                  <td className="px-4 py-2">{trx.produk}</td>
-                  <td className="px-4 py-2">{trx.jumlah}</td>
-                  <td className="px-4 py-2">{trx.total}</td>
+                  <td className="px-4 py-2 font-medium text-gray-700">{trx.id}</td>
+                  <td className="px-4 py-2 text-gray-600">{trx.tanggal}</td>
+                  <td className="px-4 py-2 text-gray-600">{trx.produk}</td>
+                  <td className="px-4 py-2 text-gray-600">{trx.jumlah}</td>
+                  <td className="px-4 py-2 text-gray-800 font-semibold">{trx.total}</td>
                 </tr>
               ))}
             </tbody>

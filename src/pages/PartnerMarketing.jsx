@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PlusCircle, Link2, Building2, Trash2, Pencil } from "lucide-react";
+import { PlusCircle, Link2, Building2, Trash2, Pencil, X } from "lucide-react";
 
 const PartnerMarketing = () => {
   const [partners, setPartners] = useState([
@@ -22,44 +22,54 @@ const PartnerMarketing = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 max-w-5xl mx-auto space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-800">Partner Marketing</h1>
+        <h1 className="text-3xl font-bold text-green-700">Kemitraan & Partner RWH</h1>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
         >
           <PlusCircle size={18} /> Tambah Partner
         </button>
       </div>
 
-      {/* Modal */}
+      {/* Modal Input */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-            <h2 className="text-lg font-bold mb-4">Tambah Partner Baru</h2>
-            <input
-              className="w-full border p-2 rounded mb-3"
-              placeholder="Nama Partner"
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-            />
-            <input
-              className="w-full border p-2 rounded mb-3"
-              placeholder="Website"
-              value={form.website}
-              onChange={(e) => setForm({ ...form, website: e.target.value })}
-            />
-            <div className="flex justify-end gap-2">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-md relative">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
+            >
+              <X />
+            </button>
+            <h2 className="text-xl font-semibold text-green-700 mb-4">
+              Tambah Partner Baru
+            </h2>
+            <div className="space-y-3">
+              <input
+                className="w-full border p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300"
+                placeholder="Nama Mitra"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+              />
+              <input
+                className="w-full border p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300"
+                placeholder="Alamat Website (https://...)"
+                value={form.website}
+                onChange={(e) => setForm({ ...form, website: e.target.value })}
+              />
+            </div>
+            <div className="flex justify-end mt-5 gap-2">
               <button
                 onClick={() => setShowModal(false)}
-                className="px-4 py-2 bg-gray-200 rounded"
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
               >
                 Batal
               </button>
               <button
                 onClick={handleAddPartner}
-                className="px-4 py-2 bg-blue-600 text-white rounded"
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
               >
                 Simpan
               </button>
@@ -73,31 +83,33 @@ const PartnerMarketing = () => {
         {partners.map((partner) => (
           <div
             key={partner.id}
-            className="p-4 bg-white rounded-lg shadow space-y-2 border"
+            className="bg-white p-4 rounded-lg shadow-sm border hover:shadow-md transition"
           >
-            <div className="flex items-center justify-between">
-              <div className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                <Building2 className="text-blue-500" size={20} />
-                {partner.name}
+            <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center gap-2 text-lg font-semibold text-green-800">
+                <Building2 size={20} /> {partner.name}
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <a
                   href={partner.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
+                  className="text-green-600 hover:underline"
                 >
                   <Link2 size={18} />
                 </a>
-                <Pencil size={18} className="text-gray-500 cursor-pointer" />
-                <Trash2
-                  size={18}
-                  className="text-red-500 cursor-pointer"
+                <button className="text-gray-400 hover:text-gray-600 cursor-not-allowed" disabled>
+                  <Pencil size={18} />
+                </button>
+                <button
                   onClick={() => handleDelete(partner.id)}
-                />
+                  className="text-red-500 hover:text-red-700"
+                >
+                  <Trash2 size={18} />
+                </button>
               </div>
             </div>
-            <p className="text-sm text-gray-600">{partner.website}</p>
+            <p className="text-sm text-gray-600 truncate">{partner.website}</p>
           </div>
         ))}
       </div>

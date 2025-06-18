@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Dialog } from "@headlessui/react";
 
 const artikelList = [
   {
@@ -31,6 +32,7 @@ const artikelList = [
 export default function PapanInformasi() {
   const [search, setSearch] = useState("");
   const [filterKategori, setFilterKategori] = useState("Semua");
+  const [selectedArtikel, setSelectedArtikel] = useState(null);
 
   const filteredArtikel = artikelList.filter((a) => {
     const cocokJudul = a.judul.toLowerCase().includes(search.toLowerCase());
@@ -41,44 +43,88 @@ export default function PapanInformasi() {
   const kategoriUnik = ["Semua", ...new Set(artikelList.map((a) => a.kategori))];
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Papan Informasi</h1>
-      <p className="text-gray-600 mb-4">Temukan panduan dan informasi seputar layanan kami.</p>
+    <div className="p-6 max-w-5xl mx-auto">
+      <h1 className="text-3xl font-bold text-green-700 mb-2">Papan Informasi RWH</h1>
+      <p className="text-gray-600 mb-6">
+        Temukan panduan, kebijakan, dan prosedur layanan Riau Wisata Hati.
+      </p>
 
+      {/* Filter Section */}
       <div className="flex flex-col md:flex-row gap-4 mb-6">
         <input
           type="text"
           placeholder="Cari berdasarkan judul..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full md:w-1/2 p-2 border border-gray-300 rounded-lg"
+          className="w-full md:w-2/3 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-300 focus:outline-none"
         />
         <select
           value={filterKategori}
           onChange={(e) => setFilterKategori(e.target.value)}
-          className="w-full md:w-1/3 p-2 border border-gray-300 rounded-lg"
+          className="w-full md:w-1/3 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-300 focus:outline-none"
         >
           {kategoriUnik.map((kategori) => (
-            <option key={kategori} value={kategori}>{kategori}</option>
+            <option key={kategori} value={kategori}>
+              {kategori}
+            </option>
           ))}
         </select>
       </div>
 
+      {/* Article Cards */}
       <div className="grid gap-4">
         {filteredArtikel.length > 0 ? (
           filteredArtikel.map((artikel) => (
-            <div key={artikel.id} className="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
-              <h2 className="text-lg font-semibold text-blue-600">{artikel.judul}</h2>
-              <p className="text-sm text-gray-700 mt-2">{artikel.isi}</p>
-              <span className="inline-block mt-3 text-xs px-2 py-1 bg-gray-100 text-gray-500 rounded-full">
-                {artikel.kategori}
-              </span>
+            <div
+              key={artikel.id}
+              className="bg-white border border-green-100 p-5 rounded-xl shadow-sm hover:shadow-md transition"
+            >
+              <h2 className="text-xl font-semibold text-green-800">{artikel.judul}</h2>
+              <p className="text-gray-700 mt-2 text-sm line-clamp-2">
+                {artikel.isi.length > 100 ? artikel.isi.slice(0, 100) + "..." : artikel.isi}
+              </p>
+              <div className="mt-3 flex items-center justify-between">
+                <span className="text-xs px-3 py-1 bg-green-50 text-green-600 border border-green-200 rounded-full">
+                  {artikel.kategori}
+                </span>
+                <button
+                  onClick={() => setSelectedArtikel(artikel)}
+                  className="text-sm text-green-600 hover:underline"
+                >
+                  Baca Selengkapnya
+                </button>
+              </div>
             </div>
           ))
         ) : (
-          <p className="text-gray-500 italic">Tidak ditemukan artikel dengan kata kunci tersebut.</p>
+          <p className="text-gray-500 italic">
+            Tidak ditemukan artikel dengan kata kunci tersebut.
+          </p>
         )}
       </div>
+
+      {/* Modal */}
+      <Dialog
+        open={selectedArtikel !== null}
+        onClose={() => setSelectedArtikel(null)}
+        className="relative z-50"
+      >
+        <div className="fixed inset-0 bg-black/40" aria-hidden="true" />
+        <div className="fixed inset-0 flex items-center justify-center p-4">
+          <Dialog.Panel className="bg-white max-w-md w-full p-6 rounded-lg shadow-xl">
+            <Dialog.Title className="text-xl font-semibold text-green-800 mb-3">
+              {selectedArtikel?.judul}
+            </Dialog.Title>
+            <p className="text-gray-700 text-sm">{selectedArtikel?.isi}</p>
+            <button
+              onClick={() => setSelectedArtikel(null)}
+              className="mt-5 text-sm text-green-600 hover:underline"
+            >
+              Tutup
+            </button>
+          </Dialog.Panel>
+        </div>
+      </Dialog>
     </div>
   );
 }

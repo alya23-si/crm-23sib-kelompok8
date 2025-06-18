@@ -41,17 +41,17 @@ export default function CustomerManagement() {
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
-      <h1 className="text-2xl font-semibold mb-4">Management Pelanggan</h1>
+      <h1 className="text-2xl font-bold text-green-700 mb-4">📇 Manajemen Pelanggan</h1>
 
       <button
         onClick={() => setShowForm((prev) => !prev)}
-        className="mb-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+        className="mb-4 px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition"
       >
-        {showForm ? "Batal Tambah Pelanggan" : "Tambah Pelanggan"}
+        {showForm ? "Batal Tambah Pelanggan" : "➕ Tambah Pelanggan"}
       </button>
 
       {showForm && (
-        <div className="mb-6 p-4 border border-gray-300 rounded shadow-sm bg-white">
+        <div className="mb-6 p-4 border border-gray-200 rounded shadow-sm bg-white">
           <div className="mb-2">
             <label className="block font-medium mb-1">Nama</label>
             <input
@@ -59,7 +59,7 @@ export default function CustomerManagement() {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Nama pelanggan"
             />
           </div>
@@ -70,7 +70,7 @@ export default function CustomerManagement() {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Email pelanggan"
             />
           </div>
@@ -81,7 +81,7 @@ export default function CustomerManagement() {
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Nomor telepon"
             />
           </div>
@@ -107,13 +107,13 @@ export default function CustomerManagement() {
 
       <div className="overflow-x-auto bg-white rounded shadow">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+          <thead className="bg-green-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telepon</th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Nama</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Email</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Telepon</th>
+              <th className="px-6 py-3 text-center text-xs font-medium text-gray-600 uppercase tracking-wider">Status</th>
+              <th className="px-6 py-3 text-center text-xs font-medium text-gray-600 uppercase tracking-wider">Aksi</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
@@ -128,20 +128,20 @@ export default function CustomerManagement() {
                       Aktif
                     </span>
                   ) : (
-                    <span className="inline-flex px-2 text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                    <span className="inline-flex px-2 text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-700">
                       Tidak Aktif
                     </span>
                   )}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-center space-x-2">
                   <button
-                    className="text-blue-600 hover:text-blue-900 font-semibold"
+                    className="text-green-600 hover:text-green-800 font-semibold"
                     onClick={() => alert("Fitur Edit belum tersedia")}
                   >
                     Edit
                   </button>
                   <button
-                    className="text-red-600 hover:text-red-900 font-semibold"
+                    className="text-red-600 hover:text-red-800 font-semibold"
                     onClick={() => handleDelete(cust.id)}
                   >
                     Hapus
@@ -162,4 +162,3 @@ export default function CustomerManagement() {
     </div>
   );
 }
-

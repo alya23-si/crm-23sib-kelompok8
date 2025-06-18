@@ -48,12 +48,12 @@ const EventBasedMarketing = () => {
   };
 
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Event-Based Marketing</h1>
+    <div className="p-6 space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold text-green-800">Event-Based Marketing</h1>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
         >
           <PlusCircle size={18} /> Tambah Event
         </button>
@@ -63,7 +63,7 @@ const EventBasedMarketing = () => {
         {events.map((event) => (
           <div
             key={event.id}
-            className="bg-white shadow rounded-lg p-5 space-y-2"
+            className="bg-white border border-green-100 rounded-xl shadow p-5 space-y-2"
           >
             <h2 className="text-lg font-semibold text-gray-800">{event.title}</h2>
             <div className="text-gray-600 flex items-center gap-2">
@@ -72,10 +72,10 @@ const EventBasedMarketing = () => {
             <div className="text-gray-600 flex items-center gap-2">
               <MapPin size={16} /> {event.location}
             </div>
-            <div className="flex justify-end gap-2 pt-4">
+            <div className="flex justify-end gap-3 pt-4">
               <button
                 onClick={() => handleEdit(event)}
-                className="text-blue-600 hover:underline text-sm"
+                className="text-orange-600 hover:underline text-sm"
               >
                 Edit
               </button>
@@ -90,11 +90,11 @@ const EventBasedMarketing = () => {
         ))}
       </div>
 
-      {/* Modal Pop-Up */}
+      {/* Modal Form */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow w-full max-w-md space-y-4">
-            <h2 className="text-lg font-bold text-gray-700 mb-4">
+          <div className="bg-white p-6 rounded-xl border border-green-100 shadow-xl w-full max-w-md space-y-4">
+            <h2 className="text-lg font-semibold text-green-700 mb-2">
               {editId ? "Edit Event" : "Tambah Event"}
             </h2>
             <input
@@ -102,36 +102,36 @@ const EventBasedMarketing = () => {
               value={form.title}
               onChange={handleChange}
               placeholder="Judul Event"
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-md focus:ring-2 focus:ring-green-400"
             />
             <input
               name="date"
               type="date"
               value={form.date}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-md focus:ring-2 focus:ring-green-400"
             />
             <input
               name="location"
               value={form.location}
               onChange={handleChange}
               placeholder="Lokasi"
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-md focus:ring-2 focus:ring-green-400"
             />
-            <div className="flex justify-end gap-2">
+            <div className="flex justify-end gap-2 pt-2">
               <button
                 onClick={() => {
                   setShowModal(false);
                   setForm({ title: "", date: "", location: "" });
                   setEditId(null);
                 }}
-                className="px-4 py-2 text-gray-700 hover:underline"
+                className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
               >
                 Batal
               </button>
               <button
                 onClick={handleSave}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
               >
                 Simpan
               </button>
