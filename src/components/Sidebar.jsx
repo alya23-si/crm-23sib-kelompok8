@@ -39,11 +39,10 @@ const groupedMenuItems = [
     items: [
       { name: "Penjualan", icon: ShoppingCart, path: "/penjualan" },
       { name: "Pelanggan", icon: Users, path: "/pelanggan" },
-      { name: "Remainder", icon: Bell, path: "/remainder" },
+      { name: "Reminder", icon: Bell, path: "/remainder" },
       { name: "Status", icon: ChartLine, path: "/status" },
-      { name: "Form Umroh", icon: ClipboardList, path: "/DaftarUmroh" },
+      { name: "Data Pendaftar", icon: ClipboardList, path: "/pendaftar" },
       { name: "Manajemen Prospek", icon: FileSearch, path: "/Prospek" },
-      { name: "Papan Informasi", icon: Info, path: "/informasi" },
     ],
   },
   {
@@ -80,12 +79,13 @@ const Sidebar = () => {
   }, []);
 
   const isActive = (path) => location.pathname === path;
-  const toggleDropdown = (label) =>
-    setOpenDropdowns((prev) => ({ ...prev, [label]: !prev[label] }));
 
-  if (userRole !== "admin") {
-    return null; // ❌ Sembunyikan sidebar jika bukan admin
-  }
+  const toggleDropdown = (label) => {
+    setOpenDropdowns((prev) => ({ ...prev, [label]: !prev[label] }));
+  };
+
+  // ❌ Jangan render sidebar jika bukan admin
+  if (userRole !== "admin") return null;
 
   return (
     <aside
@@ -93,6 +93,7 @@ const Sidebar = () => {
         collapsed ? "w-20" : "w-64"
       }`}
     >
+      {/* Logo dan Collapse Button */}
       <div className="flex items-center justify-between px-4 mb-6">
         {!collapsed && (
           <img
@@ -109,7 +110,7 @@ const Sidebar = () => {
         </button>
       </div>
 
-      {/* Menu khusus admin */}
+      {/* Menu untuk Admin */}
       {groupedMenuItems.map((group) => (
         <div key={group.label} className="mb-2">
           <button
@@ -151,7 +152,7 @@ const Sidebar = () => {
         </div>
       ))}
 
-      {/* Bagian akun tetap ditampilkan */}
+      {/* Akun */}
       <div className="mt-6 text-xs font-semibold text-gray-500 px-4">
         {!collapsed && "AKUN"}
       </div>

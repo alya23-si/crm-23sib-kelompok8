@@ -14,18 +14,18 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const Penjualan = () => {
   const summary = [
-    { label: "Total Penjualan", value: "$120,000", percent: "+10%", color: "green" },
-    { label: "Pesanan Hari Ini", value: "250", percent: "+4%", color: "orange" },
-    { label: "Produk Terjual", value: "3,452", percent: "-1%", color: "red" },
-    { label: "Retur", value: "120", percent: "+2%", color: "yellow" },
+    { label: "Total Penjualan", value: "Rp275.000.000", percent: "+15%", color: "green" },
+    { label: "Pesanan Hari Ini", value: "7", percent: "+5%", color: "orange" },
+    { label: "Paket Terjual", value: "15", percent: "+2%", color: "blue" },
+    { label: "Pembatalan", value: "1", percent: "-1%", color: "red" },
   ];
 
   const barData = {
     labels: ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"],
     datasets: [
       {
-        label: "Penjualan Harian ($)",
-        data: [12000, 15000, 10000, 14000, 18000, 22000, 17000],
+        label: "Penjualan Harian (Rp)",
+        data: [50000000, 45000000, 60000000, 35000000, 30000000, 25000000, 30000000],
         backgroundColor: "rgba(67, 160, 71, 0.7)", // green-600
         borderRadius: 6,
       },
@@ -38,7 +38,7 @@ const Penjualan = () => {
       legend: { position: "top" },
       title: {
         display: true,
-        text: "Tren Penjualan Mingguan",
+        text: "Tren Penjualan Paket Umroh/Haji Mingguan",
         color: "#43A047",
         font: { size: 18 },
       },
@@ -56,16 +56,17 @@ const Penjualan = () => {
   };
 
   const transaksi = [
-    { id: "#TRX001", tanggal: "2025-05-20", produk: "Kamera Canon M50", jumlah: 1, total: "$600" },
-    { id: "#TRX002", tanggal: "2025-05-20", produk: "Tripod Takara", jumlah: 2, total: "$90" },
-    { id: "#TRX003", tanggal: "2025-05-19", produk: "Lighting Softbox", jumlah: 1, total: "$120" },
-    { id: "#TRX004", tanggal: "2025-05-18", produk: "Mic Rode Wireless", jumlah: 1, total: "$280" },
+    { id: "#TRX001", tanggal: "2025-05-20", produk: "Paket Umroh Reguler 9 Hari", jumlah: 2, total: "Rp50.000.000" },
+    { id: "#TRX002", tanggal: "2025-05-20", produk: "Paket Umroh Plus Turki", jumlah: 1, total: "Rp35.000.000" },
+    { id: "#TRX003", tanggal: "2025-05-19", produk: "Paket Haji Khusus (ONH Plus)", jumlah: 1, total: "Rp100.000.000" },
+    { id: "#TRX004", tanggal: "2025-05-18", produk: "Paket Umroh Ramadhan 12 Hari", jumlah: 3, total: "Rp90.000.000" },
   ];
 
   return (
     <div className="p-6 space-y-8">
-      <h1 className="text-2xl font-bold text-green-700">📦 Ringkasan Penjualan</h1>
+      <h1 className="text-2xl font-bold text-green-700">🕌 Ringkasan Penjualan Umroh & Haji</h1>
 
+      {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {summary.map(({ label, value, percent, color }) => (
           <div key={label} className="bg-white rounded-xl shadow p-5 border border-gray-100">
@@ -78,10 +79,12 @@ const Penjualan = () => {
         ))}
       </div>
 
+      {/* Bar Chart */}
       <div className="bg-white rounded-xl shadow p-6 border border-gray-100">
         <Bar options={barOptions} data={barData} />
       </div>
 
+      {/* Recent Transactions Table */}
       <div className="bg-white rounded-xl shadow p-6 border border-gray-100">
         <h2 className="text-lg font-semibold mb-4 text-green-700">🧾 Transaksi Terakhir</h2>
         <div className="overflow-auto">
@@ -90,7 +93,7 @@ const Penjualan = () => {
               <tr>
                 <th className="px-4 py-2">ID Transaksi</th>
                 <th className="px-4 py-2">Tanggal</th>
-                <th className="px-4 py-2">Produk</th>
+                <th className="px-4 py-2">Paket</th>
                 <th className="px-4 py-2">Jumlah</th>
                 <th className="px-4 py-2">Total</th>
               </tr>

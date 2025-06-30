@@ -1,11 +1,11 @@
 // pages/FormPendaftaranUmroh.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import logorwh from "../assets/logorwh.png";
 
 const supabase = createClient(
   "https://uaqrzhdaqniaakxsrnny.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhcXJ6aGRhcW5pYWFreHNybm55Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4MzUyMTYsImV4cCI6MjA2NjQxMTIxNn0.Uxz61nWFyXg2sny7lsVawsnLbZ-FjWM4xqVC1kl8KoQ" // anon key
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhcXJ6aGRhcW5pYWFreHNybm55Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4MzUyMTYsImV4cCI6MjA2NjQxMTIxNn0.Uxz61nWFyXg2sny7lsVawsnLbZ-FjWM4xqVC1kl8KoQ"
 );
 
 const FormPendaftaranUmroh = () => {
@@ -19,10 +19,21 @@ const FormPendaftaranUmroh = () => {
     no_hp: "",
     email: "",
     no_paspor: "",
+    paket_id: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [paketList, setPaketList] = useState([]);
+
+  useEffect(() => {
+    const fetchPaket = async () => {
+      const { data, error } = await supabase.from("paket").select("id, title");
+      if (!error) setPaketList(data);
+      else console.error(error);
+    };
+    fetchPaket();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,6 +64,7 @@ const FormPendaftaranUmroh = () => {
         no_hp: "",
         email: "",
         no_paspor: "",
+        paket_id: "",
       });
     }
     setLoading(false);
@@ -72,7 +84,12 @@ const FormPendaftaranUmroh = () => {
             { label: "NIK", name: "nik" },
             { label: "Tempat Lahir", name: "tempat_lahir" },
             { label: "Tanggal Lahir", name: "tanggal_lahir", type: "date" },
-            { label: "Jenis Kelamin", name: "jenis_kelamin", type: "select", options: ["Laki-laki", "Perempuan"] },
+            {
+              label: "Jenis Kelamin",
+              name: "jenis_kelamin",
+              type: "select",
+              options: ["Laki-laki", "Perempuan"],
+            },
             { label: "No. HP", name: "no_hp" },
             { label: "Email", name: "email", type: "email" },
             { label: "No. Paspor", name: "no_paspor" },
@@ -105,6 +122,26 @@ const FormPendaftaranUmroh = () => {
             </div>
           ))}
 
+          {/* Paket Umroh */}
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-gray-700">Paket Umroh</label>
+            <select
+              name="paket_id"
+              value={formData.paket_id}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2"
+              required
+            >
+              <option value="">-- Pilih Paket --</option>
+              {paketList.map((paket) => (
+                <option key={paket.id} value={paket.id}>
+                  {paket.title}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Alamat */}
           <div className="md:col-span-2">
             <label className="block text-sm font-medium text-gray-700">Alamat</label>
             <textarea
