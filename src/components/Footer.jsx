@@ -10,7 +10,7 @@ const Footer = () => {
         <div>
           <img src={logorwh} alt="Riau Wisata Hati" className="h-12 mb-4" />
           <p className="text-sm">
-            Riau Wisata Hati adalah biro perjalanan ibadah Umroh dan Haji
+            Riau Wisatat Hati adalah biro perjalanan ibadah Umroh dan Haji
             terpercaya yang mengutamakan kenyamanan dan spiritualitas jamaah.
           </p>
         </div>
