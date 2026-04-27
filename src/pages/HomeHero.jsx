@@ -1,58 +1,97 @@
-import { FaWhatsapp, FaTiktok, FaInstagram, FaYoutube } from "react-icons/fa";
-import rwhImage from "../assets/masjidNabawi.jpg";
+import { useEffect, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
+import produkImage from "../assets/logosegar.png";
 
 const HomeHero = () => {
+  const text1 = "Segar Alami";
+  const text2 =
+    "Nikmati susu kedelai dan kembang tahu dengan bahan alami tanpa pengawet — sehat, segar, dan cocok untuk aktivitas harian Anda.";
+
+  const [displayText1, setDisplayText1] = useState("");
+  const [displayText2, setDisplayText2] = useState("");
+  const [showImage, setShowImage] = useState(false);
+
+  // Typing H1
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      setDisplayText1(text1.slice(0, i + 1));
+      i++;
+      if (i === text1.length) clearInterval(interval);
+    }, 80);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Typing Deskripsi (delay setelah H1)
+  useEffect(() => {
+    if (displayText1.length === text1.length) {
+      let i = 0;
+      const interval = setInterval(() => {
+        setDisplayText2(text2.slice(0, i + 1));
+        i++;
+        if (i === text2.length) clearInterval(interval);
+      }, 25);
+
+      return () => clearInterval(interval);
+    }
+  }, [displayText1]);
+
+  // Image pop-up
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowImage(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section className="bg-gradient-to-b from-orange-50 to-green-50 py-16">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        {/* Gambar */}
-        <div className="group relative overflow-hidden rounded-2xl shadow-lg">
+    <section className="py-24 bg-gradient-to-b from-green-50 to-white">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+
+        {/* KIRI */}
+        <div>
+
+          {/* H1 Typing */}
+          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+            <span className="bg-gradient-to-r from-green-800 to-green-400 bg-clip-text text-transparent">
+              {displayText1}
+              <span className="animate-pulse">|</span>
+            </span>
+          </h1>
+
+          {/* Deskripsi Typing */}
+          <p className="text-gray-600 text-lg mb-6 max-w-md leading-relaxed min-h-[80px]">
+            {displayText2}
+          </p>
+
+          {/* Harga */}
+          <p className="text-green-700 font-semibold mb-6">
+            💰 Mulai dari Rp5.000 – Rp10.000
+          </p>
+
+          {/* CTA */}
+          <a
+            href="https://wa.me/628xxxxxxxxxx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-full text-sm font-medium shadow-md transition"
+          >
+            <FaWhatsapp /> Pesan Sekarang
+          </a>
+        </div>
+
+        {/* KANAN (IMAGE POP UP) */}
+        <div className="flex justify-center md:justify-end">
           <img
-            src={rwhImage}
-            alt="Jamaah Umroh RWH"
-            className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            src={produkImage}
+            alt="Produk Segar Alami"
+            className={`w-[350px] md:w-[450px] object-contain transition-all duration-700 ease-out
+              ${showImage ? "opacity-100 scale-100" : "opacity-0 scale-75"}
+            `}
           />
         </div>
 
-        {/* Konten */}
-        <div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-            <span className="text-orange-500">RWH</span>{" "}
-            <span className="text-gray-800">Travel Umroh</span>
-          </h1>
-
-          <p className="text-gray-700 mb-4 text-lg">
-            Assalamualaikum <strong>Jamaah RWH</strong>, selamat datang di layanan umroh resmi dari{" "}
-            <strong>PT Riau Wisata Hati</strong>.
-          </p>
-
-          <ul className="text-sm text-gray-700 space-y-1 mb-6">
-            <li>✅ <strong>Akreditasi A</strong> – Tgl: 02-12-2022</li>
-            <li>✅ Lembaga: <strong>PT Tirta Murni Sertifikasi</strong></li>
-            <li>✅ SK No: <span className="text-green-600 font-semibold">167 Tahun 2016</span></li>
-          </ul>
-
-          {/* Tombol Sosial */}
-          <div className="flex flex-wrap gap-3 mb-6">
-            <a
-              href="https://wa.me/628117697985"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white text-sm rounded-md transition shadow-sm"
-            >
-              <FaWhatsapp /> WhatsApp
-            </a>
-            <a href="#" className="flex items-center gap-2 px-4 py-2 bg-black hover:bg-gray-800 text-white text-sm rounded-md transition shadow-sm">
-              <FaTiktok /> TikTok
-            </a>
-            <a href="#" className="flex items-center gap-2 px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white text-sm rounded-md transition shadow-sm">
-              <FaInstagram /> Instagram
-            </a>
-            <a href="#" className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-sm rounded-md transition shadow-sm">
-              <FaYoutube /> YouTube
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );
